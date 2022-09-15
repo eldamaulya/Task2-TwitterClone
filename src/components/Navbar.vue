@@ -1,22 +1,12 @@
 <script>
-// export default {
-//     data() {
-//         return {
-//             name: "tweet",
-//             maxLimit: 10
-//         },
-//         methods : {
-//             cekInp(){
-//                 this.name = this.name.substr(0, this.maxLimit);
-//             }
-//         }
-//         computed : {
-//             minLimit(){
-//                 return this.maxLimit - this.name.length;
-//             }
-//         }
-//     }
-// }
+export default {
+  inject: ['fullname', 'username', 'profile'],
+  data(){
+    return {
+      Foto:this.profile
+    }
+  }
+};
 </script>
 
 <template>
@@ -24,23 +14,14 @@
     <h2 class="title">Simple Twitter Clone With Vue</h2>
     <div class="user">
         <div class="text">
-            <p class="fullname">Elda Qotul Maulya</p>
-            <p class="username">@eldamaulya</p>
+            <p>{{ fullname }}</p>
+            <p>{{ username }}</p>
         </div>
+    </div>
+    <div class="profile">
+        <img :src="Foto" alt="">
     </div>
  </div>
- <section class="section">
- <form class="form">
-    <textarea class="tweet" name="tweet" id="tweet" placeholder="Write Something" rows="4"
-    v-model="tweet" @input="cekInp" :class="{borderWar : !minLimit}">{{ minLimit }}/{{ maxLimit }}</textarea>
-    <div class="footer">
-        <p class="panjang">1/10</p>
-        <div class="button">
-            <button type="submit" class="button button-primary">Tweet</button>
-        </div>
-    </div>
-</form>
-</section>
 </template>
 
 <style>
@@ -54,17 +35,9 @@
     background-color: aquamarine;
 }
 
-.form {
-    width: 100%;
-    height: 100%;
-    width: 100%;
-    align-items: center;
-    margin: auto;
-    padding: 1rem;
-}
-
-.textarea {
-    width: 100%;
-    background-color: #ffffff0d;
+.profile{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
 </style>
